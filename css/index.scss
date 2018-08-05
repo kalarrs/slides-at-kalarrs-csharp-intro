@@ -1,0 +1,176 @@
+.reveal {
+
+  .clearfix {
+    overflow: hidden;
+    clear: both;
+  }
+  .sls {
+    background: #FD5750;
+    a {
+      color: #fff !important;
+    }
+  }
+
+  .boxes {
+    float: left;
+    width: 50%;
+    &:first-child {
+      margin-right: 20px;
+      width: calc(50% - 20px)
+    }
+
+    .outline {
+      padding-top: 15px;
+      border: .03em solid white;
+      h4 {
+        margin-bottom: 0;
+      }
+
+      &.pull-left {
+        padding: 0 20px;
+        .kalarrs {
+          font-size: 1em;
+        }
+      }
+    }
+  }
+
+  .pull-left {
+    float: left;
+  }
+
+  .pull-right {
+    float: right;
+  }
+
+  .kalarrs {
+    font-size: 1.1em;
+    text-transform: lowercase;
+    &:before {
+      color: #bada55;
+      content: '@'
+    }
+  }
+
+  table {
+    &.t-0 {
+      tr {
+        background: #42affa;
+      }
+    }
+
+    &.t-1 {
+      tr:nth-child(1), tr:nth-child(2), tr:nth-child(3), tr:nth-child(4), tr:nth-child(6) {
+        background: #42affa;
+      }
+    }
+    &.t-2 {
+      tr:nth-child(1), tr:nth-child(2) {
+        background: #42affa;
+      }
+    }
+    &.t-3 {
+      tr:nth-child(1), tr:nth-child(2), tr:nth-child(3), tr:nth-child(4), tr:nth-child(6) {
+        background: #42affa;
+      }
+    }
+    &.t-4 {
+      tr:nth-child(1) {
+        background: #42affa;
+      }
+    }
+  }
+
+  .oses {
+    img {
+      width: 100px;
+      height: 100px;
+    }
+  }
+
+  .folder, .file {
+    display: block;
+    position: relative;
+
+    .note {
+      margin-left: 50px;
+      font-size: .7em;
+    }
+
+    i {
+      font-size: 1.3em;
+      top: 10px;
+      left: -3px;
+      position: relative;
+    }
+
+    &.workspace i {
+      color: orange;
+    }
+
+    &.project i {
+      color: mediumpurple;
+    }
+
+    &.src i {
+      color: lighten(mediumpurple, 10%);
+    }
+
+    &.test i {
+      color: lighten(seagreen, 10%);
+    }
+
+    &.docs i {
+      color: lightskyblue;
+    }
+
+    &.yarn i {
+      color: #117cad;
+    }
+
+    &.library i {
+      color: #efef8f;
+    }
+  }
+
+  .tree {
+    font-size: .8em;
+    text-align: left;
+
+    div {
+      padding-left: 20px;
+      + div {
+        padding-left: 40px;
+        + div {
+          padding-left: 60px;
+        }
+      }
+    }
+  }
+
+
+  .material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;  /* Preferred icon size */
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+
+    /* Support for IE. */
+    font-feature-settings: 'liga';
+  }
+}

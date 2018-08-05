@@ -1,0 +1,525 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>@kalarrs Typescript Intro</title>
+
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/black.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+<body>
+<div class="reveal">
+    <!--Let the tooling do all the work! So you can just write code.-->
+    <div class="slides">
+        <section>
+            <h1><span class="kalarrs">kalarrs</span></h1>
+            <h3>The Complete Serverless Framework</h3>
+            <p>
+                <small>Created by <a href="https://github.com/exocom" target="_blank">Kalarrs Topham</a> and <a>contributors</a>
+                </small>
+            </p>
+            <aside class="notes">
+                Should I add each language box here?
+            </aside>
+        </section>
+        <section>
+            <h2>This talk</h2>
+            <p>I'm going to take the next hour and educate you on how you or your company can reduce operating cost,
+                deploy code faster, and enhance your integration choices by utilizing FAAS aka Serverless. I'm also
+                going to talk about how the <span class="kalarrs">kalarrs</span> tooling makes this process even easier.</p>
+        </section>
+        <section>
+            <h2>After this talk</h2>
+            <ol>
+                <li class="fragment">Add FAAS with @kalarrs</li>
+                <li class="fragment">Add FAAS without @kalarrs, build your own</li>
+                <li class="fragment">Do nothing</li>
+            </ol>
+        </section>
+        <section>
+            <h2>About Me</h2>
+            <div class="clearfix">
+                <div style="float: left">
+                    <img width="275" alt="Kalarrs Topham"
+                         src="https://kalarrs.com/assets/images/kalarrs-headshot.png">
+                    <p>Kalarrs Topham</p>
+
+                </div>
+                <div style="float: left; margin-left: 30px;">
+                    <small>
+                        <table>
+                            <tr>
+                                <td>2003</td>
+                                <td>ASP Classic / Action Script (Flash) / VB Script</td>
+                            </tr>
+                            <tr>
+                                <td>2004-2009</td>
+                                <td>Went Missing</td>
+                            </tr>
+                            <tr>
+                                <td>2009</td>
+                                <td>PHP / Javascript (jQuery)<br>MySQL</td>
+                            </tr>
+                            <tr>
+                                <td>2013</td>
+                                <td>JavaScript (AngularJS/Ionic/NodeJS)<br>MongoDB</td>
+                            </tr>
+                            <tr>
+                                <td>2016</td>
+                                <td>Typescript (Angular/Tabris.js) / C# (dotnet) <br> JavaScript (React/Vue.js) /
+                                    PostgreSQL
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2017</td>
+                                <td>Ruby / Java (Android) / Objective-C (iOS)</td>
+                            </tr>
+                            <tr>
+                                <td>2018</td>
+                                <td>Python / Kotlin (Java 8) / GoLang (Soon...)</td>
+                            </tr>
+                        </table>
+                    </small>
+                </div>
+            </div>
+            <aside class="notes">
+                Mention I am the creator of @kalarrs then talk shortly about programming background.
+                Touch on my drive to use the correct solution for the problem.
+            </aside>
+        </section>
+        <section>
+            <h2>History of software developers responsibilities</h2>
+            <ul>
+                <li class="fragment">15 years ago</li>
+                <li class="fragment">10 years ago</li>
+                <li class="fragment">5 years ago</li>
+                <li class="fragment">Today</li>
+            </ul>
+
+            <aside class="notes">
+                15 - Talk about building and maintaining servers + apps + code + db
+                10 - Using paas + maintain apps in the cloud + code + db
+                * easy to replicate
+                * scaling - load balancers
+                5 - Talk about going to the cloud + apps + code
+                * AWS, GCP, Azure
+                * Easier to replicate
+                * Lucky enough, use built in scaling
+                * DB as a service
+                T - We want to be able to just pay for a system that allows us to just write code and will scale
+                automatically.
+            </aside>
+        </section>
+        <section>
+            <h2>5 main types of <br>cloud computing services</h2>
+            <div class="clearfix">
+                <div class="pull-left">
+                    <div>
+                        <ol>
+                            <li id="t-1" class="fragment">Infrastructure as a Service (IaaS)</li>
+                            <li id="t-2" class="fragment">Platform as a Service (PaaS)</li>
+                            <li id="t-3" class="fragment">Container as a Service (CaaS)</li>
+                            <li id="t-4" class="fragment sls">Function as a Service (FaaS)</li>
+                            <li id="t-5" class="fragment">Software as a Service (SaaS)</li>
+                        </ol>
+                    </div>
+                    <img src="https://cdn-images-1.medium.com/max/1600/1*DYoadhgfpZCMRCMKNUpQ6A.png" width="680"
+                         style="border: 0;"
+                         alt="" class="fragment">
+                </div>
+                <div>
+                    <table id="t" style="font-size: .5em; border: solid 1px white;" class="t-0">
+                        <tr>
+                            <td>Application Code</td>
+                        </tr>
+                        <tr>
+                            <td>Applications</td>
+                        </tr>
+                        <tr>
+                            <td>Runtimes</td>
+                        </tr>
+                        <tr>
+                            <td>Security & Integration</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Databases</td>
+                        </tr>
+                        <tr>
+                            <td>Servers</td>
+                        </tr>
+                        <tr>
+                            <td>Virtualization</td>
+                        </tr>
+                        <tr>
+                            <td>Server Hardware</td>
+                        </tr>
+                        <tr>
+                            <td>Storage</td>
+                        </tr>
+                        <tr>
+                            <td>Networking</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <aside><a
+                    href="https://medium.com/@nnilesh7756/what-are-cloud-computing-services-iaas-caas-paas-faas-saas-ac0f6022d36e">Median
+                Article</a></aside>
+        </section>
+        <section>
+            <h2>What is <span class="kalarrs">kalarrs</span></h2>
+            <p>Set of tooling built on top of <a href="https://serverless.com/framework">Serverless Framework</a>,
+                mainly as plugins. As well as a collection of
+                libraries to normalize development between languages.</p>
+            <small><a href="htttp://github.com/kalarrs">htttp://github.com/kalarrs</a></small>
+
+            <div class="clearfix">
+                <div class="boxes fragment">
+                    <div class="outline">
+                        <h4><span class="kalarrs">kalarrs</span></h4>
+                        <small><a href="https://kalarrs.com">https://kalarrs.com</a></small>
+                    </div>
+                    <div class="sls outline">
+                        <h4 style="font-size: .9em;">Serverless Framework</h4>
+                        <small><a href="https://serverless.com/framework/">https://serverless.com/framework/</a></small>
+                    </div>
+                </div>
+                <div class="boxes fragment">
+                    <div class="outline">
+                        <p>
+                            <small>Node Modules (Dependencies)</small>
+                        </p>
+                        <div class="clearfix">
+                            <div class="pull-left outline"><h4><span class="kalarrs"></span></h4></div>
+                            <div class="pull-left outline"><h4><span class="kalarrs"></span></h4></div>
+                            <div class="pull-left outline"><h4><span class="kalarrs"></span></h4></div>
+                            <div class="pull-left outline"><h4>Dep</h4></div>
+                            <div class="pull-left outline"><h4>Dep</h4></div>
+                        </div>
+                    </div>
+                    <div class="outline" style="background: #42affa; padding-bottom: 20px;">
+                        <h4 style="font-size: .9em;">Application Code</h4>
+                    </div>
+                </div>
+            </div>
+            <aside class="notes">
+                Push next to reveal image.
+                Explain this is done mostly via plugins.
+            </aside>
+        </section>
+        <section>
+            <h2>Without Serverless Framework</h2>
+            <ul>
+                <li>Manually Create API Gateway</li>
+                <li>Manually Create API Gateway Resources</li>
+                <li>Manually Create and Upload Lambda Code</li>
+                <li>Manually Configure Environment variables</li>
+                <li>Wire events to Lambdas</li>
+                <li>Setup custom code backups</li>
+                <li>Multiple cloud providers is difficult</li>
+            </ul>
+        </section>
+        <section>
+            <h2>What does Serverless do?</h2>
+            <ul>
+                <li>Automates the infrastructure process</li>
+                <li>
+                    Automatically create cloud formations
+                    <ul>
+                        <li>Creates resources (All)</li>
+                        <li>Configures Events</li>
+                        <li>Configures Environment variables</li>
+                        <li>Organizes code</li>
+                    </ul>
+                </li>
+                <li>Stores Code on s3</li>
+                <li>Deploys Code</li>
+                <li>Supports multiple cloud providers</li>
+            </ul>
+        </section>
+        <section>
+            <h2>What Serverless Framework doesn't do</h2>
+            <ul>
+                <li>Provide Architecture and Design patterns</li>
+                <li>Generate code</li>
+                <li>Visualize Infrastructure</li>
+                <!--https://abhishek-tiwari.com/visualising-cloudformation-stack/-->
+                <li>Use latest code</li>
+                <li>Support best practices for hitrust/HIPPA compliance</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Main Focus of <span style="text-transform: lowercase;"><span
+                    style="color: #bada55;">@</span>kalarrs</span></h2>
+            <hr>
+            <p>Enable developers to get started with FASS quickly.</p>
+            <div class="clearfix">
+                <ul class="pull-left">
+                    <li class="fragment">
+                        <span>Api</span>
+                        <ul>
+                            <li>Scale Horizontally</li>
+                            <li>Scale Vertically</li>
+                            <li>Micro Services</li>
+                            <li>Partial Deploys</li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="pull-left">
+                    <li class="fragment">
+                        Schedule Jobs
+                        <ul>
+                            <li>Data Integrity</li>
+                            <li>Logging</li>
+                            <li>Sync</li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="pull-left">
+                    <li class="fragment">
+                        Pipelines
+                        <ul>
+                            <li>ETL</li>
+                            <li>Events</li>
+                            <li>Queues</li>
+                            <li>Complex</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <section>
+            <h2>Secondary Focus of <span style="text-transform: lowercase;"><span style="color: #bada55;">@</span>kalarrs</span>
+            </h2>
+            <hr>
+            <ul>
+                <li class="fragment">Language agnostic</li>
+                <li class="fragment">Local Debugging</li>
+                <li class="fragment">
+                    Libraries for common patterns
+                    <ul>
+                        <li>Uniform Api Across languages</li>
+                        <li>Code that looks similar</li>
+                        <li>Latest &amp; greatest language features</li>
+                    </ul>
+                </li>
+                <li class="fragment">Provider agnostic (Coming Soon)</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Making the transition to FaaS (Serverless)</h2>
+            <p>How do you get started on transitioning?</p>
+            <p><span class="kalarrs">kalarrs</span>/cli allows you to get started quickly. It also has many templates
+                for creating common projects saving you and your company precious time.</p>
+        </section>
+        <section>
+            <h2>What this looks like</h2>
+            <p>Demo Time</p>
+            <ul>
+                <li class="fragment">Workspace (Typescript, C#)</li>
+                <li class="fragment">AWS API Gateway</li>
+                <!--<li class="fragment">AWS Cloud Watch Rules</li>-->
+                <!--<li class="fragment">AWS Lambda with triggers from s3 (pipeline)</li>-->
+            </ul>
+        </section>
+        <section>
+            <h2>Getting Started</h2>
+            <p>What would normally take 4 hours the <span class="kalarrs">kalarrs</span>/cli condenses
+                into less than 20 minutes.</p>
+            <iframe allowFullScreen="allowFullScreen"
+                    src="https://www.youtube.com/embed/Dox6GQznpRI?ecver=1&amp;iv_load_policy=1&amp;rel=0&amp;yt:stretch=16:9&amp;autohide=1&amp;color=red"
+                    allowtransparency="true" frameborder="0" width="400" height="225">
+            </iframe>
+            <p style="margin: 0;">
+                <small>Find this video on <a href="https://kalarrs.com">https://kalarrs.com</a></small>
+            </p>
+            <div class="oses">
+                <div>
+                    <img src="/assets/images/OSX.jpg" alt="">
+                    <img src="/assets/images/windows.jpg" alt="">
+                    <img src="/assets/images/linux.png" style="background: #fff;" alt="">
+                </div>
+                <small style="margin-top: -25px;">Soon</small>
+            </div>
+        </section>
+        <section>
+            <h2>I've got <span class="kalarrs">kalarrs/cli</span> now what?</h2>
+            <pre class="fragment" style="margin-top: -20px; margin-bottom: 0;"><code class="shell" data-trim
+                                                                                     contenteditable
+                                                                                     style="font-size: 18px;">
+$ kalarrs global sls
+					</code></pre>
+            <p class="fragment">Setup your machine for serverless develpment.</p>
+            <p class="fragment">Now time to create a Workspace.</p>
+        </section>
+        <section>
+            <h2>What is a Workspace?</h2>
+            <p>Named after the Java equivalent a workspace is a folder that contains projects. In dotnet this is very
+                similar to a solution.</p>
+            <div class="clearfix">
+                <div class="fragment tree pull-left">
+                    <span class="folder workspace"><i class="material-icons">folder</i>Workspace</span>
+                    <div>
+                        <span class="folder"><i class="material-icons">folder</i>.env</span>
+                        <span class="file"><i class="material-icons">insert_drive_file</i>serverless.yml</span>
+                        <span class="file"><i class="material-icons">insert_drive_file</i>serverless-user.yml</span>
+                        <span class="folder project"><i class="material-icons">folder</i>Project</span>
+                        <span class="folder project"><i class="material-icons">folder</i>Project</span>
+                        <span class="folder project" style="margin-bottom: -20px"><i class="material-icons">folder</i>Project</span>
+                        ...
+                    </div>
+                </div>
+                <div class="fragment tree pull-left" style="margin-left: 40px;">
+                    <span class="folder project"><i class="material-icons">folder</i>Project</span>
+                    <div>
+                        <span class="folder dist"><i class="material-icons">folder</i>.serverless</span>
+                        <span class="folder dist"><i class="material-icons">folder</i>.webpack</span>
+                        <span class="folder docs"><i class="material-icons">folder</i>docs</span>
+                        <span class="folder src"><i class="material-icons">folder</i>src</span>
+                        <span class="folder"><i class="material-icons">folder</i>node_modules</span>
+                        <span class="folder test"><i class="material-icons">folder</i>test</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <h2>init a workspace</h2>
+            <div class="fragment" data-fragment-index="1">
+            <pre style="margin-top: -20px; margin-bottom: 0;"><code class="shell" data-trim contenteditable
+                                                                    style="font-size: 18px;">
+$ kalarrs workspace init
+					</code></pre>
+            </div>
+            <div class="clearfix fragment" data-fragment-index="2">
+                <div class="tree">
+                    <span class="folder workspace"><i class="material-icons">folder</i>Workspace</span>
+                    <div>
+                        <any class="fragment" data-fragment-index="7">
+                            <span class="folder"><i class="material-icons">folder</i>
+                                .env
+                                <span class="note">Directory for stage specific settings.</span>
+                            </span>
+                            <div>
+                                <span class="file"><i class="material-icons">insert_drive_file</i>
+                                    dev.yml
+                                    <span class="note">Dev Stage settings.</span>
+                                </span>
+                            </div>
+                        </any>
+                        <span class="folder fragment" data-fragment-index="3"><i
+                                class="material-icons">folder</i>.git</span>
+                        <span class="folder library fragment" data-fragment-index="5"><i
+                                class="material-icons">folder</i>node_modules</span>
+                        <span class="file fragment" data-fragment-index="3"><i
+                                class="material-icons">insert_drive_file</i>.gitignore</span>
+                        <span class="file fragment" data-fragment-index="4"><i
+                                class="material-icons">insert_drive_file</i>package.json</span>
+                        <span class="file fragment" data-fragment-index="8"><i
+                                class="material-icons">insert_drive_file</i>
+                            serverless.yml
+                            <span class="note">Global settings. References Stage specific files automatically.</span>
+                        </span>
+                        <span class="file fragment" data-fragment-index="6"><i
+                                class="material-icons">insert_drive_file</i>
+                            serverless-user.yml
+                            <span class="note">User specific settings.</span>
+                        </span>
+                        <span class="file yarn fragment" data-fragment-index="5"><i class="material-icons">insert_drive_file</i>yarn.lock</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <h2>What is a Project?</h2>
+            <p>The code, documentation, & tests for a micro service. Typically an api resource, scheduled job, or part
+                of a pipeline.</p>
+            <div class="clearfix">
+                <div class="fragment tree pull-left">
+                    <span class="folder project"><i class="material-icons">folder</i>Project</span>
+                    <div>
+                        <span class="folder dist"><i class="material-icons">folder</i>.serverless</span>
+                        <span class="folder dist"><i class="material-icons">folder</i>.webpack</span>
+                        <span class="folder docs"><i class="material-icons">folder</i>docs</span>
+                        <span class="folder src"><i class="material-icons">folder</i>src</span>
+                        <span class="folder"><i class="material-icons">folder</i>node_modules</span>
+                        <span class="folder test"><i class="material-icons">folder</i>test</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <h2>Creating a new project</h2>
+            <ol>
+                <li>Clone a template</li>
+                <ul>
+                    <li>github.com/kalarrs/serverless-template-*</li>
+                </ul>
+                <li>Create from scratch</li>
+            </ol>
+        </section>
+        <section>
+            <h2>Create a typescript api with mongo</h2>
+            <pre class="fragment" style="margin-top: -20px; margin-bottom: 0;"><code class="shell" data-trim contenteditable style="font-size: 18px;">
+$ serverless create --template-url https://github.com/kalarrs/\
+serverless-template-typescript/tree/master/aws/mongo --path users
+            </code></pre>
+        </section>
+    </div>
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+
+<script>
+    // More info about config & dependencies:
+    // - https://github.com/hakimel/reveal.js#configuration
+    // - https://github.com/hakimel/reveal.js#dependencies
+    let tExp = /^t-([0-9]+)$/i;
+
+    Reveal.addEventListener('fragmentshown', function (event) {
+        if (tExp.test(event.fragment.id)) {
+            document.getElementById('t').className = event.fragment.id;
+        }
+    });
+    Reveal.addEventListener('fragmenthidden', function (event) {
+        if (tExp.test(event.fragment.id)) {
+            let num = parseInt(event.fragment.id.replace(tExp, '$1'));
+            document.getElementById('t').className = 't-' + (num - 1);
+        }
+    });
+
+    Reveal.initialize({
+        dependencies: [
+            {src: 'plugin/markdown/marked.js'},
+            {src: 'plugin/markdown/markdown.js'},
+            {src: 'plugin/notes/notes.js', async: true},
+            {
+                src: 'plugin/highlight/highlight.js', async: true, callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            }
+        ]
+    });
+
+
+</script>
+</body>
+</html>

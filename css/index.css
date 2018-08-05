@@ -1,0 +1,114 @@
+.reveal .clearfix {
+  overflow: hidden;
+  clear: both; }
+
+.reveal .sls {
+  background: #FD5750; }
+  .reveal .sls a {
+    color: #fff !important; }
+
+.reveal .boxes {
+  float: left;
+  width: 50%; }
+  .reveal .boxes:first-child {
+    margin-right: 20px;
+    width: calc(50% - 20px); }
+  .reveal .boxes .outline {
+    padding-top: 15px;
+    border: .03em solid white; }
+    .reveal .boxes .outline h4 {
+      margin-bottom: 0; }
+    .reveal .boxes .outline.pull-left {
+      padding: 0 20px; }
+      .reveal .boxes .outline.pull-left .kalarrs {
+        font-size: 1em; }
+
+.reveal .pull-left {
+  float: left; }
+
+.reveal .pull-right {
+  float: right; }
+
+.reveal .kalarrs {
+  font-size: 1.1em;
+  text-transform: lowercase; }
+  .reveal .kalarrs:before {
+    color: #bada55;
+    content: '@'; }
+
+.reveal table.t-0 tr {
+  background: #42affa; }
+
+.reveal table.t-1 tr:nth-child(1), .reveal table.t-1 tr:nth-child(2), .reveal table.t-1 tr:nth-child(3), .reveal table.t-1 tr:nth-child(4), .reveal table.t-1 tr:nth-child(6) {
+  background: #42affa; }
+
+.reveal table.t-2 tr:nth-child(1), .reveal table.t-2 tr:nth-child(2) {
+  background: #42affa; }
+
+.reveal table.t-3 tr:nth-child(1), .reveal table.t-3 tr:nth-child(2), .reveal table.t-3 tr:nth-child(3), .reveal table.t-3 tr:nth-child(4), .reveal table.t-3 tr:nth-child(6) {
+  background: #42affa; }
+
+.reveal table.t-4 tr:nth-child(1) {
+  background: #42affa; }
+
+.reveal .oses img {
+  width: 100px;
+  height: 100px; }
+
+.reveal .folder, .reveal .file {
+  display: block;
+  position: relative; }
+  .reveal .folder .note, .reveal .file .note {
+    margin-left: 50px;
+    font-size: .7em; }
+  .reveal .folder i, .reveal .file i {
+    font-size: 1.3em;
+    top: 10px;
+    left: -3px;
+    position: relative; }
+  .reveal .folder.workspace i, .reveal .file.workspace i {
+    color: orange; }
+  .reveal .folder.project i, .reveal .file.project i {
+    color: mediumpurple; }
+  .reveal .folder.src i, .reveal .file.src i {
+    color: #b299e5; }
+  .reveal .folder.test i, .reveal .file.test i {
+    color: #3bb16f; }
+  .reveal .folder.docs i, .reveal .file.docs i {
+    color: lightskyblue; }
+  .reveal .folder.yarn i, .reveal .file.yarn i {
+    color: #117cad; }
+  .reveal .folder.library i, .reveal .file.library i {
+    color: #efef8f; }
+
+.reveal .tree {
+  font-size: .8em;
+  text-align: left; }
+  .reveal .tree div {
+    padding-left: 20px; }
+    .reveal .tree div + div {
+      padding-left: 40px; }
+      .reveal .tree div + div + div {
+        padding-left: 60px; }
+
+.reveal .material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+  /* Support for IE. */
+  font-feature-settings: 'liga'; }
