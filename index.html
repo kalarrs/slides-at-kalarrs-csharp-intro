@@ -23,9 +23,34 @@
     </script>
 </head>
 <body>
+
+<!--
+1. Tell what your going to tell them then tell them
+Going to learn how to get started using lambda on AWS and how Serverless framework and @kalarrs can speed up the process by building on top of each other.
+ We'll cover this in 3 parts,
+
+
+2. Prepare an AWS region for the demo and create some functions just in case.
+
+
+1. NOTE : Creating a C# lambda function doesn't allow you to view code inline.
+Going to use Windows and AWS vs plugin.
+https://aws.amazon.com/visualstudio/
+
+2. Create a basic lambda function
+
+3. Create a serverless lambda function
+
+4. Up the ante with @kalarrs serverless
+
+
+
+-->
+
 <div class="reveal">
     <!--Let the tooling do all the work! So you can just write code.-->
     <div class="slides">
+        <!--
         <section>
             <h1><span class="kalarrs">kalarrs</span></h1>
             <h3>The Complete Serverless Framework</h3>
@@ -39,15 +64,20 @@
         </section>
         <section>
             <h2>This talk</h2>
-            <p>I'm going to take the next hour and educate you on how you or your company can reduce operating cost,
-                deploy code faster, and enhance your integration choices by utilizing FAAS aka Serverless. I'm also
-                going to talk about how the <span class="kalarrs">kalarrs</span> tooling makes this process even easier.</p>
+            <p>I'm going to cover how to start using Function as a Service (FaaS). We'll focus on creating lambda functions on AWS.</p>
+            <small>
+            <ol>
+                <li>How to create lambda functions directly on AWS.</li>
+                <li>How to create lambda functions with serverless framework.</li>
+                <li>How to creating lambda functions with @kalarrs.</li>
+            </ol>
+            </small>
         </section>
         <section>
             <h2>After this talk</h2>
             <ol>
-                <li class="fragment">Add FAAS with @kalarrs</li>
-                <li class="fragment">Add FAAS without @kalarrs, build your own</li>
+                <li class="fragment">Add FaaS with @kalarrs</li>
+                <li class="fragment">Add FaaS without @kalarrs, build your own</li>
                 <li class="fragment">Do nothing</li>
             </ol>
         </section>
@@ -58,6 +88,7 @@
                     <img width="275" alt="Kalarrs Topham"
                          src="https://kalarrs.com/assets/images/kalarrs-headshot.png">
                     <p>Kalarrs Topham</p>
+                    <small style="margin-top: -25px;">(polyglot)</small>
 
                 </div>
                 <div style="float: left; margin-left: 30px;">
@@ -103,86 +134,39 @@
             </aside>
         </section>
         <section>
-            <h2>History of software developers responsibilities</h2>
-            <ul>
-                <li class="fragment">15 years ago</li>
-                <li class="fragment">10 years ago</li>
-                <li class="fragment">5 years ago</li>
-                <li class="fragment">Today</li>
-            </ul>
+            <h2>Before we begin</h2>
+            <dl>
+                <dt class="fragment">Function as a service (FaaS) / Serverless</dt>
+                <dd class="fragment"><small>Function as a service (FaaS) is a category of cloud computing services that provides a platform allowing customers to develop, run, and manage application functionalities without the complexity of building and maintaining the infrastructure.</small></dd>
 
-            <aside class="notes">
-                15 - Talk about building and maintaining servers + apps + code + db
-                10 - Using paas + maintain apps in the cloud + code + db
-                * easy to replicate
-                * scaling - load balancers
-                5 - Talk about going to the cloud + apps + code
-                * AWS, GCP, Azure
-                * Easier to replicate
-                * Lucky enough, use built in scaling
-                * DB as a service
-                T - We want to be able to just pay for a system that allows us to just write code and will scale
-                automatically.
-            </aside>
+                <dt class="fragment">AWS Lambda</dt>
+                <dd class="fragment"><small>Run code without thinking about servers. Pay only for the compute time you consume. With Lambda, you can run code for virtually any type of application or backend service - all with zero administration. Just upload your code and Lambda takes care of everything required to run and scale your code with high availability. You can set up your code to automatically trigger from other AWS services or call it directly from any web or mobile app.</small></dd>
+
+                <dt class="fragment">Serverless Framework</dt>
+                <dd class="fragment"><small>The Serverless Framework is an open-source CLI for building and deploying serverless applications. Written in JavaScript.</small></dd>
+            </dl>
         </section>
         <section>
-            <h2>5 main types of <br>cloud computing services</h2>
-            <div class="clearfix">
-                <div class="pull-left">
-                    <div>
-                        <ol>
-                            <li id="t-1" class="fragment">Infrastructure as a Service (IaaS)</li>
-                            <li id="t-2" class="fragment">Platform as a Service (PaaS)</li>
-                            <li id="t-3" class="fragment">Container as a Service (CaaS)</li>
-                            <li id="t-4" class="fragment sls">Function as a Service (FaaS)</li>
-                            <li id="t-5" class="fragment">Software as a Service (SaaS)</li>
-                        </ol>
-                    </div>
-                    <img src="https://cdn-images-1.medium.com/max/1600/1*DYoadhgfpZCMRCMKNUpQ6A.png" width="680"
-                         style="border: 0;"
-                         alt="" class="fragment">
-                </div>
-                <div>
-                    <table id="t" style="font-size: .5em; border: solid 1px white;" class="t-0">
-                        <tr>
-                            <td>Application Code</td>
-                        </tr>
-                        <tr>
-                            <td>Applications</td>
-                        </tr>
-                        <tr>
-                            <td>Runtimes</td>
-                        </tr>
-                        <tr>
-                            <td>Security & Integration</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Databases</td>
-                        </tr>
-                        <tr>
-                            <td>Servers</td>
-                        </tr>
-                        <tr>
-                            <td>Virtualization</td>
-                        </tr>
-                        <tr>
-                            <td>Server Hardware</td>
-                        </tr>
-                        <tr>
-                            <td>Storage</td>
-                        </tr>
-                        <tr>
-                            <td>Networking</td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-            <aside><a
-                    href="https://medium.com/@nnilesh7756/what-are-cloud-computing-services-iaas-caas-paas-faas-saas-ac0f6022d36e">Median
-                Article</a></aside>
+            <h2>#1 Your first AWS lambda function!</h2>
+            <p>Go to AWS Lambda Console</p>
+            <p><a href="https://console.aws.amazon.com/lambda/home?region=us-east-1#/home" target="_blank">https://console.aws.amazon.com/lambda/home?region=us-east-1#/home</a></p>
+        </section>
+                -->
+        <section>
+            <h2>Pitfalls</h2>
+            <ul>
+                <li>C# code can't be edited in the browser. This is because it is a complied language.</li>
+                <li>Really no instructions on what everything means. You would have to read a lot of docs.</li>
+                <li>Not clear how to upload your own code.</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Solutions</h2>
+            <p>Creating an AWS lambda from Visual Studio by using the AWS Toolkit for Visual Studio</p>
+            <a href="https://aws.amazon.com/visualstudio/" target="_blank">https://aws.amazon.com/visualstudio/</a>
+        </section>
+        <section>
+            <h2>#2 Create an AWS Lambda from a template</h2>
         </section>
         <section>
             <h2>What is <span class="kalarrs">kalarrs</span></h2>
