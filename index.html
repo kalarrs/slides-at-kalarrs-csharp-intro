@@ -50,7 +50,6 @@ https://aws.amazon.com/visualstudio/
 <div class="reveal">
     <!--Let the tooling do all the work! So you can just write code.-->
     <div class="slides">
-        <!--
         <section>
             <h1><span class="kalarrs">kalarrs</span></h1>
             <h3>The Complete Serverless Framework</h3>
@@ -64,20 +63,19 @@ https://aws.amazon.com/visualstudio/
         </section>
         <section>
             <h2>This talk</h2>
-            <p>I'm going to cover how to start using Function as a Service (FaaS). We'll focus on creating lambda functions on AWS.</p>
-            <small>
-            <ol>
-                <li>How to create lambda functions directly on AWS.</li>
-                <li>How to create lambda functions with serverless framework.</li>
-                <li>How to creating lambda functions with @kalarrs.</li>
-            </ol>
-            </small>
+            <ul>
+                <li class="fragment">Forget about managing servers.</li>
+                <li class="fragment">Just write code and scale to support millions of customers without any code changes.</li>
+                <li class="fragment">Save thousands of dollars a month by only paying when your code is actually running.</li>
+                <li class="fragment">Deploy faster because there is no need to wait for a server to be built.</li>
+           </ul>
+           <p class="fragment">This is all possible because of Function as a Service (FaaS)</p>
         </section>
         <section>
             <h2>After this talk</h2>
             <ol>
-                <li class="fragment">Add FaaS with @kalarrs</li>
-                <li class="fragment">Add FaaS without @kalarrs, build your own</li>
+                <li class="fragment">Add FaaS on AWS with @kalarrs and Serverless Framework</li>
+                <li class="fragment">Add FaaS without @kalarrs, Serverless Framework or build your own</li>
                 <li class="fragment">Do nothing</li>
             </ol>
         </section>
@@ -137,19 +135,46 @@ https://aws.amazon.com/visualstudio/
             <h2>Before we begin</h2>
             <dl>
                 <dt class="fragment">Function as a service (FaaS) / Serverless</dt>
-                <dd class="fragment"><small>Function as a service (FaaS) is a category of cloud computing services that provides a platform allowing customers to develop, run, and manage application functionalities without the complexity of building and maintaining the infrastructure.</small></dd>
+                <dd class="fragment">
+                    <small>Function as a service (FaaS) is a category of cloud computing services that provides a
+                        platform allowing customers to develop, run, and manage application functionalities without the
+                        complexity of building and maintaining the infrastructure.
+                    </small>
+                </dd>
 
                 <dt class="fragment">AWS Lambda</dt>
-                <dd class="fragment"><small>Run code without thinking about servers. Pay only for the compute time you consume. With Lambda, you can run code for virtually any type of application or backend service - all with zero administration. Just upload your code and Lambda takes care of everything required to run and scale your code with high availability. You can set up your code to automatically trigger from other AWS services or call it directly from any web or mobile app.</small></dd>
+                <dd class="fragment">
+                    <small>Run code without thinking about servers. Pay only for the compute time you consume. With
+                        Lambda, you can run code for virtually any type of application or backend service - all with
+                        zero administration. Just upload your code and Lambda takes care of everything required to run
+                        and scale your code with high availability. You can set up your code to automatically trigger
+                        from other AWS services or call it directly from any web or mobile app.
+                    </small>
+                </dd>
 
                 <dt class="fragment">Serverless Framework</dt>
-                <dd class="fragment"><small>The Serverless Framework is an open-source CLI for building and deploying serverless applications. Written in JavaScript.</small></dd>
+                <dd class="fragment">
+                    <small>The Serverless Framework is an open-source CLI for building and deploying serverless
+                        applications. Written in JavaScript.
+                    </small>
+                </dd>
             </dl>
+        </section>
+        <section>
+            <h2>Get started with AWS Lambda.</h2>
+            <small>
+                <ol>
+                    <li class="fragment">How to create lambda functions directly on AWS.</li>
+                    <li class="fragment">How to create lambda functions with serverless framework.</li>
+                    <li class="fragment">How to creating lambda functions with @kalarrs.</li>
+                </ol>
+            </small>
         </section>
         <section>
             <h2>#1 Your first AWS lambda function!</h2>
             <p>Go to AWS Lambda Console</p>
-            <p><a href="https://console.aws.amazon.com/lambda/home?region=us-east-1#/home" target="_blank">https://console.aws.amazon.com/lambda/home?region=us-east-1#/home</a></p>
+            <p><a href="https://console.aws.amazon.com/lambda/home?region=us-east-1#/home" target="_blank">https://console.aws.amazon.com/lambda/home?region=us-east-1#/home</a>
+            </p>
         </section>
         <section>
             <h2>Pitfalls</h2>
@@ -164,53 +189,13 @@ https://aws.amazon.com/visualstudio/
             <p>Creating an AWS lambda from Visual Studio by using the AWS Toolkit for Visual Studio</p>
             <a href="https://aws.amazon.com/visualstudio/" target="_blank">https://aws.amazon.com/visualstudio/</a>
         </section>
-        -->
         <section>
             <h2>#2 Create an AWS Lambda from a template</h2>
 
-            <p><a href="https://docs.microsoft.com/en-us/visualstudio/install/update-visual-studio" target="_blank">Update Visual Studio</a> to latest version</p>
-            <p><a href="https://www.microsoft.com/net/learn/get-started-with-dotnet-tutorial" target="_blank">Update .NET SDK</a> to latest version</p>
-        </section>
-        <section>
-            <h2>What is <span class="kalarrs">kalarrs</span></h2>
-            <p>Set of tooling built on top of <a href="https://serverless.com/framework">Serverless Framework</a>,
-                mainly as plugins. As well as a collection of
-                libraries to normalize development between languages.</p>
-            <small><a href="htttp://github.com/kalarrs">htttp://github.com/kalarrs</a></small>
-
-            <div class="clearfix">
-                <div class="boxes fragment">
-                    <div class="outline">
-                        <h4><span class="kalarrs">kalarrs</span></h4>
-                        <small><a href="https://kalarrs.com">https://kalarrs.com</a></small>
-                    </div>
-                    <div class="sls outline">
-                        <h4 style="font-size: .9em;">Serverless Framework</h4>
-                        <small><a href="https://serverless.com/framework/">https://serverless.com/framework/</a></small>
-                    </div>
-                </div>
-                <div class="boxes fragment">
-                    <div class="outline">
-                        <p>
-                            <small>Node Modules (Dependencies)</small>
-                        </p>
-                        <div class="clearfix">
-                            <div class="pull-left outline"><h4><span class="kalarrs"></span></h4></div>
-                            <div class="pull-left outline"><h4><span class="kalarrs"></span></h4></div>
-                            <div class="pull-left outline"><h4><span class="kalarrs"></span></h4></div>
-                            <div class="pull-left outline"><h4>Dep</h4></div>
-                            <div class="pull-left outline"><h4>Dep</h4></div>
-                        </div>
-                    </div>
-                    <div class="outline" style="background: #42affa; padding-bottom: 20px;">
-                        <h4 style="font-size: .9em;">Application Code</h4>
-                    </div>
-                </div>
-            </div>
-            <aside class="notes">
-                Push next to reveal image.
-                Explain this is done mostly via plugins.
-            </aside>
+            <p><a href="https://docs.microsoft.com/en-us/visualstudio/install/update-visual-studio" target="_blank">Update
+                Visual Studio</a> to latest version</p>
+            <p><a href="https://www.microsoft.com/net/learn/get-started-with-dotnet-tutorial" target="_blank">Update
+                .NET SDK</a> to latest version</p>
         </section>
         <section>
             <h2>Without Serverless Framework</h2>
@@ -254,78 +239,45 @@ https://aws.amazon.com/visualstudio/
             </ul>
         </section>
         <section>
-            <h2>Main Focus of <span style="text-transform: lowercase;"><span
-                    style="color: #bada55;">@</span>kalarrs</span></h2>
-            <hr>
-            <p>Enable developers to get started with FASS quickly.</p>
+            <h2>What is <span class="kalarrs">kalarrs</span></h2>
+            <p>Set of tooling built on top of <a href="https://serverless.com/framework">Serverless Framework</a>,
+                mainly as plugins. As well as a collection of
+                libraries to normalize development between languages.</p>
+            <small><a href="htttp://github.com/kalarrs">htttp://github.com/kalarrs</a></small>
+
             <div class="clearfix">
-                <ul class="pull-left">
-                    <li class="fragment">
-                        <span>Api</span>
-                        <ul>
-                            <li>Scale Horizontally</li>
-                            <li>Scale Vertically</li>
-                            <li>Micro Services</li>
-                            <li>Partial Deploys</li>
-                        </ul>
-                    </li>
-                </ul>
-                <ul class="pull-left">
-                    <li class="fragment">
-                        Schedule Jobs
-                        <ul>
-                            <li>Data Integrity</li>
-                            <li>Logging</li>
-                            <li>Sync</li>
-                        </ul>
-                    </li>
-                </ul>
-                <ul class="pull-left">
-                    <li class="fragment">
-                        Pipelines
-                        <ul>
-                            <li>ETL</li>
-                            <li>Events</li>
-                            <li>Queues</li>
-                            <li>Complex</li>
-                        </ul>
-                    </li>
-                </ul>
+                <div class="boxes fragment">
+                    <div class="outline">
+                        <h4><span class="kalarrs">kalarrs</span></h4>
+                        <small><a href="https://kalarrs.com">https://kalarrs.com</a></small>
+                    </div>
+                    <div class="sls outline">
+                        <h4 style="font-size: .9em;">Serverless Framework</h4>
+                        <small><a href="https://serverless.com/framework/">https://serverless.com/framework/</a></small>
+                    </div>
+                </div>
+                <div class="boxes fragment">
+                    <div class="outline">
+                        <p>
+                            <small>Node Modules (Dependencies)</small>
+                        </p>
+                        <div class="clearfix">
+                            <div class="pull-left outline"><h4><span class="kalarrs"></span></h4></div>
+                            <div class="pull-left outline"><h4><span class="kalarrs"></span></h4></div>
+                            <div class="pull-left outline"><h4><span class="kalarrs"></span></h4></div>
+                            <div class="pull-left outline"><h4>Dep</h4></div>
+                            <div class="pull-left outline"><h4>Dep</h4></div>
+                        </div>
+                    </div>
+                    <div class="outline" style="background: #42affa; padding-bottom: 20px;">
+                        <h4 style="font-size: .9em;">Application Code</h4>
+                    </div>
+                </div>
             </div>
-        </section>
-        <section>
-            <h2>Secondary Focus of <span style="text-transform: lowercase;"><span style="color: #bada55;">@</span>kalarrs</span>
-            </h2>
-            <hr>
-            <ul>
-                <li class="fragment">Language agnostic</li>
-                <li class="fragment">Local Debugging</li>
-                <li class="fragment">
-                    Libraries for common patterns
-                    <ul>
-                        <li>Uniform Api Across languages</li>
-                        <li>Code that looks similar</li>
-                        <li>Latest &amp; greatest language features</li>
-                    </ul>
-                </li>
-                <li class="fragment">Provider agnostic (Coming Soon)</li>
-            </ul>
-        </section>
-        <section>
-            <h2>Making the transition to FaaS (Serverless)</h2>
-            <p>How do you get started on transitioning?</p>
-            <p><span class="kalarrs">kalarrs</span>/cli allows you to get started quickly. It also has many templates
-                for creating common projects saving you and your company precious time.</p>
-        </section>
-        <section>
-            <h2>What this looks like</h2>
-            <p>Demo Time</p>
-            <ul>
-                <li class="fragment">Workspace (Typescript, C#)</li>
-                <li class="fragment">AWS API Gateway</li>
-                <!--<li class="fragment">AWS Cloud Watch Rules</li>-->
-                <!--<li class="fragment">AWS Lambda with triggers from s3 (pipeline)</li>-->
-            </ul>
+            <aside class="notes">
+                Push next to reveal image.
+                Explain this is done mostly via plugins.
+            </aside>
         </section>
         <section>
             <h2>Getting Started</h2>
@@ -464,11 +416,91 @@ $ kalarrs workspace init
         </section>
         <section>
             <h2>Create a typescript api with mongo</h2>
-            <pre class="fragment" style="margin-top: -20px; margin-bottom: 0;"><code class="shell" data-trim contenteditable style="font-size: 18px;">
+            <pre class="fragment" style="margin-top: -20px; margin-bottom: 0;"><code class="shell" data-trim
+                                                                                     contenteditable
+                                                                                     style="font-size: 18px;">
 $ serverless create --template-url https://github.com/kalarrs/\
 serverless-template-typescript/tree/master/aws/mongo --path users
             </code></pre>
         </section>
+
+
+        <!--
+        <section>
+            <h2>Main Focus of <span style="text-transform: lowercase;"><span
+                    style="color: #bada55;">@</span>kalarrs</span></h2>
+            <hr>
+            <p>Enable developers to get started with FASS quickly.</p>
+            <div class="clearfix">
+                <ul class="pull-left">
+                    <li class="fragment">
+                        <span>Api</span>
+                        <ul>
+                            <li>Scale Horizontally</li>
+                            <li>Scale Vertically</li>
+                            <li>Micro Services</li>
+                            <li>Partial Deploys</li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="pull-left">
+                    <li class="fragment">
+                        Schedule Jobs
+                        <ul>
+                            <li>Data Integrity</li>
+                            <li>Logging</li>
+                            <li>Sync</li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="pull-left">
+                    <li class="fragment">
+                        Pipelines
+                        <ul>
+                            <li>ETL</li>
+                            <li>Events</li>
+                            <li>Queues</li>
+                            <li>Complex</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <section>
+            <h2>Secondary Focus of <span style="text-transform: lowercase;"><span style="color: #bada55;">@</span>kalarrs</span>
+            </h2>
+            <hr>
+            <ul>
+                <li class="fragment">Language agnostic</li>
+                <li class="fragment">Local Debugging</li>
+                <li class="fragment">
+                    Libraries for common patterns
+                    <ul>
+                        <li>Uniform Api Across languages</li>
+                        <li>Code that looks similar</li>
+                        <li>Latest &amp; greatest language features</li>
+                    </ul>
+                </li>
+                <li class="fragment">Provider agnostic (Coming Soon)</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Making the transition to FaaS (Serverless)</h2>
+            <p>How do you get started on transitioning?</p>
+            <p><span class="kalarrs">kalarrs</span>/cli allows you to get started quickly. It also has many templates
+                for creating common projects saving you and your company precious time.</p>
+        </section>
+        <section>
+            <h2>What this looks like</h2>
+            <p>Demo Time</p>
+            <ul>
+                <li class="fragment">Workspace (Typescript, C#)</li>
+                <li class="fragment">AWS API Gateway</li>
+                <li class="fragment">AWS Cloud Watch Rules</li>
+                <li class="fragment">AWS Lambda with triggers from s3 (pipeline)</li>
+            </ul>
+        </section>
+        -->
     </div>
 </div>
 
