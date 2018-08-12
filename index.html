@@ -52,7 +52,7 @@ https://aws.amazon.com/visualstudio/
     <div class="slides">
         <section>
             <h1><span class="kalarrs">kalarrs</span></h1>
-            <h3>The Complete Serverless Framework</h3>
+            <p>Helping you organize, deploy, and manage complex serverless projects.</p>
             <p>
                 <small>Created by <a href="https://github.com/exocom" target="_blank">Kalarrs Topham</a> and <a>contributors</a>
                 </small>
@@ -64,18 +64,28 @@ https://aws.amazon.com/visualstudio/
         <section>
             <h2>This talk</h2>
             <ul>
-                <li class="fragment">Forget about managing servers.</li>
+                <li class="fragment">How to forget about managing servers.</li>
                 <li class="fragment">Just write code and scale to support millions of customers without any code changes.</li>
                 <li class="fragment">Save thousands of dollars a month by only paying when your code is actually running.</li>
-                <li class="fragment">Deploy faster because there is no need to wait for a server to be built.</li>
+                <li class="fragment">Deploy faster and scale further because there is no need to wait for a server to be built or deployed.</li>
            </ul>
-           <p class="fragment">This is all possible because of Function as a Service (FaaS)</p>
         </section>
         <section>
             <h2>After this talk</h2>
             <ol>
-                <li class="fragment">Add FaaS on AWS with @kalarrs and Serverless Framework</li>
-                <li class="fragment">Add FaaS without @kalarrs, Serverless Framework or build your own</li>
+                <li class="fragment">Basic understanding of Function as a Service (FasS)</li>
+                <li class="fragment">Basic understanding of Serverless</li>
+                <li class="fragment">Deploy Serveless solution on AWS with <span class="kalarrs">kalarrs</span> and
+                    Serverless Framework
+                </li>
+                <li class="fragment">Deploy Serverless soultion without <span class="kalarrs">kalarrs</span>.
+                    <br>
+                    <ul>
+                        <li>AWS CloudFormation</li>
+                        <li>Serverless Framework</li>
+                        <li>Write your own</li>
+                    </ul>
+                </li>
                 <li class="fragment">Do nothing</li>
             </ol>
         </section>
@@ -126,15 +136,143 @@ https://aws.amazon.com/visualstudio/
                     </small>
                 </div>
             </div>
-            <aside class="notes">
-                Mention I am the creator of @kalarrs then talk shortly about programming background.
-                Touch on my drive to use the correct solution for the problem.
-            </aside>
+            <aside class="notes"></aside>
         </section>
         <section>
+            <h2>General Confusion</h2>
+            <p>Not everything is "Serverless"</p>
+            <p class="fragment"><i>However everyone will refer to it as "Serverless"</i></p>
+        </section>
+        <section>
+            <div class="clearfix" style="width: 960px;">
+                <h2>Let's Clarify</h2>
+
+                <div class="pull-left"
+                     style="width: calc(50% - 16px); padding-right: 15px; border-right: 1px solid white;">
+                    <h2 style="text-transform: none;">FaaS</h2>
+                    <p class="fragment">
+                        <small>Function as a service (FaaS) is a category of cloud computing services that provides
+                            a platform allowing customers to develop, run, and manage application functionalities
+                            without the complexity of building and maintaining the infrastructure.
+                        </small>
+                    </p>
+                    <p class="fragment">
+                        AWS Lambda<br>
+                        Microsoft Functions<br>
+                        Google Cloud Functions<br>
+                    </p>
+                </div>
+                <div class="pull-left" style="width: calc(50% - 16px); padding-left: 15px;">
+                    <h2 style="text-transform: none;">Serverless</h2>
+                    <p class="fragment">
+                        <small>Serverless computing is a cloud-computing execution model in which the cloud provider
+                            acts as the server, dynamically managing the allocation of machine resources.
+                            <br>
+                            <span class="fragment" style="color: #bada55;">Typically by utilizing a FaaS service provider.</span>
+                        </small>
+                    </p>
+                    <p class="fragment">Your Code <br>
+                        <small class="fragment">There really are servers!</small>
+                    </p>
+                </div>
+            </div>
+        </section>
+        <section>
+            <h2 style="text-transform: none;">FaaS</h2>
+            <p style="margin-top: -20px; margin-bottom: 0;">It's where the servers at!</p>
+            <hr>
+            <div class="clearfix" style="font-size: .8em; text-align: left;">
+                <div class="pull-left">
+                    <p>AWS Lambda</p>
+                    <small>
+                        <ul>
+                            <li>Node.js – v8.10, v6.10</li>
+                            <li>Java – Java 8</li>
+                            <li>Python – Python 3.6 and 2.7</li>
+                            <li>.NET Core – .NET Core 1.0.1,<br> .NET Core 2.0 and .NET Core 2.1</li>
+                            <li>Go – Go 1.x</li>
+                        </ul>
+                    </small>
+                </div>
+                <div class="pull-left" style="margin-left: 40px;">
+                    <p>Azure Functions</p>
+                    <small>
+                        <ul>
+                            <li>C#</li>
+                            <li>Javascript (Node.js)</li>
+                            <li>F#</li>
+                            <li>Java</li>
+
+                            <li><strong>Experimental</strong></li>
+
+                            <li>Python</li>
+                            <li>PHP</li>
+                            <li>TypeScript</li>
+                            <li>Batch (.cmd, .bat)</li>
+                            <li>Bash</li>
+                            <li>PowerShell</li>
+                        </ul>
+                    </small>
+                </div>
+                <div class="pull-left" style="margin-left: 40px;">
+                    <p>Google Cloud Functions</p>
+                    <small>
+                        <ul>
+                            <li>Javascript (Node.js)</li>
+                        </ul>
+                    </small>
+                </div>
+            </div>
+        </section>
+        <section>
+            <h3 style="margin-bottom: 5px;">AWS Lambda</h3>
+            <p>Server configuration options</p>
+
+            <pre><code class="json" data-trim contenteditable style="font-size: 18px; overflow: hidden;">
+{
+    FunctionName: "ToUpperCase",
+    Environment: {
+        "MONGODB_URI": "mongodb://[username:password@]host1[:port1][,host2[:port2],...[,hostN[:portN]]][/[database][?options]]"
+    },
+    Handler: "CsharpHandlers::template.Handler::ToUpperCase",
+    MemorySize: 512, // CPU scales proportionally
+    Runtime: "dotnetcore2.1",
+    Timeout: 300 // Max execution time of 5 minutes
+}
+
+            </code></pre>
+            <div>
+                <img src="assets/images/icons/csharp-server.png" class="icon fragment" alt="">
+                <img src="assets/images/icons/csharp-server.png" class="icon fragment" alt="">
+                <img src="assets/images/icons/csharp-server.png" class="icon" alt="">
+                <img src="assets/images/icons/csharp-server.png" class="icon fragment" alt="">
+                <img src="assets/images/icons/csharp-server.png" class="icon fragment" alt="">
+            </div>
+        </section>
+        <section>
+            <h2>Function invocation</h2>
+        </section>
+<!--
+        <section>
             <h2>Before we begin</h2>
+
+            <p>Many terms will be confusing.</p>
+            <ul>
+                <li class="fragment">Typically people call the implementation of FaaS: "Serverless"</li>
+                <li class="fragment">Example of FaaS providers: "AWS Lambda", "Google Cloud Functions", & "Azure
+                    Functions"
+                </li>
+                <li class="fragment">You will also see terms like "Serverless architecture". This is talking about how
+                    you write code to utilize FaaS providers.
+                </li>
+                <li class="fragment">There is a company called Serverless. Which is just plain confusing.</li>
+            </ul>
+        </section>
+        <section>
+            <h2>To Avoid Confusion</h2>
+
             <dl>
-                <dt class="fragment">Function as a service (FaaS) / Serverless</dt>
+                <dt class="fragment">Function as a service (FaaS) <strike>Serverless</strike></dt>
                 <dd class="fragment">
                     <small>Function as a service (FaaS) is a category of cloud computing services that provides a
                         platform allowing customers to develop, run, and manage application functionalities without the
@@ -142,7 +280,7 @@ https://aws.amazon.com/visualstudio/
                     </small>
                 </dd>
 
-                <dt class="fragment">AWS Lambda</dt>
+                <dt class="fragment">AWS Lambda <strike>Serverless</strike></dt>
                 <dd class="fragment">
                     <small>Run code without thinking about servers. Pay only for the compute time you consume. With
                         Lambda, you can run code for virtually any type of application or backend service - all with
@@ -152,7 +290,7 @@ https://aws.amazon.com/visualstudio/
                     </small>
                 </dd>
 
-                <dt class="fragment">Serverless Framework</dt>
+                <dt class="fragment">Serverless Framework <strike>Serverless</strike></dt>
                 <dd class="fragment">
                     <small>The Serverless Framework is an open-source CLI for building and deploying serverless
                         applications. Written in JavaScript.
@@ -160,6 +298,7 @@ https://aws.amazon.com/visualstudio/
                 </dd>
             </dl>
         </section>
+        -->
         <section>
             <h2>Get started with AWS Lambda.</h2>
             <small>
@@ -179,9 +318,13 @@ https://aws.amazon.com/visualstudio/
         <section>
             <h2>Pitfalls</h2>
             <ul>
-                <li>C# code can't be edited in the browser. This is because it is a jitted language.</li>
-                <li>Really no instructions on what everything means. You would have to read a lot of docs.</li>
-                <li>Not clear how to upload your own code.</li>
+                <li class="fragment">Runtime languages are easy to get started with, but not compiled languages.</li>
+                <li class="fragment">C# code can't be edited in the browser. This is because it is a jitted language.
+                </li>
+                <li class="fragment">Really no instructions on what everything means. You would have to read a lot of
+                    docs.
+                </li>
+                <li class="fragment">Not clear how to upload your own code.</li>
             </ul>
         </section>
         <section>
@@ -190,7 +333,23 @@ https://aws.amazon.com/visualstudio/
             <a href="https://aws.amazon.com/visualstudio/" target="_blank">https://aws.amazon.com/visualstudio/</a>
         </section>
         <section>
-            <h2>#2 Create an AWS Lambda from a template</h2>
+            <h2>AWS Console <br>VS <br> Visual Studio Plugin</h2>
+            <p>Note: You will need to setup AWS credentials to use the plugin.</p>
+        </section>
+        <section>
+            <h2>Pitfalls</h2>
+            <ul>
+                <li class="fragment">Runtime languages are easy to get started with, but not compiled languages.</li>
+                <li class="fragment">C# code can't be edited in the browser. This is because it is a jitted language.
+                </li>
+                <li class="fragment">Really no instructions on what everything means. You would have to read a lot of
+                    docs.
+                </li>
+                <li class="fragment">Not clear how to upload your own code.</li>
+            </ul>
+        </section>
+        <section>
+            <h2>#2-a Create an AWS Lambda from a template</h2>
 
             <p><a href="https://docs.microsoft.com/en-us/visualstudio/install/update-visual-studio" target="_blank">Update
                 Visual Studio</a> to latest version</p>
@@ -198,7 +357,20 @@ https://aws.amazon.com/visualstudio/
                 .NET SDK</a> to latest version</p>
         </section>
         <section>
-            <h2>Without Serverless Framework</h2>
+            <h2>#2-b Create an AWS Lambda from a serverless (framework) template</h2>
+            <p>Respond to API GET request.</p>
+            <p>Works by using <a href="https://aws.amazon.com/cloudformation/" target="_blank">Cloud​Formation</a></p>
+        </section>
+
+        <section>
+            <h2>Pitfalls</h2>
+            <ul>
+                <li class="fragment">You have to know cloud formation in order to expand the number of endpoints.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Without CloudFormation</h2>
             <ul>
                 <li>Manually Create API Gateway</li>
                 <li>Manually Create API Gateway Resources</li>
@@ -210,6 +382,13 @@ https://aws.amazon.com/visualstudio/
             </ul>
         </section>
         <section>
+            <h2>Moving to Serverless Framework</h2>
+
+            <p>Requires NodeJS</p>
+
+            <p>Can't use the VS Studio Plugin for deployments</p>
+        </section>
+        <!--<section>
             <h2>What does Serverless do?</h2>
             <ul>
                 <li>Automates the infrastructure process</li>
@@ -233,17 +412,18 @@ https://aws.amazon.com/visualstudio/
                 <li>Provide Architecture and Design patterns</li>
                 <li>Generate code</li>
                 <li>Visualize Infrastructure</li>
-                <!--https://abhishek-tiwari.com/visualising-cloudformation-stack/-->
+                &lt;!&ndash;https://abhishek-tiwari.com/visualising-cloudformation-stack/&ndash;&gt;
                 <li>Use latest code</li>
                 <li>Support best practices for hitrust/HIPPA compliance</li>
             </ul>
-        </section>
+        </section>-->
+
         <section>
             <h2>What is <span class="kalarrs">kalarrs</span></h2>
             <p>Set of tooling built on top of <a href="https://serverless.com/framework">Serverless Framework</a>,
                 mainly as plugins. As well as a collection of
                 libraries to normalize development between languages.</p>
-            <small><a href="htttp://github.com/kalarrs">htttp://github.com/kalarrs</a></small>
+            <small><a href="https://github.com/kalarrs">htttp://github.com/kalarrs</a></small>
 
             <div class="clearfix">
                 <div class="boxes fragment">
@@ -259,7 +439,7 @@ https://aws.amazon.com/visualstudio/
                 <div class="boxes fragment">
                     <div class="outline">
                         <p>
-                            <small>Node Modules (Dependencies)</small>
+                            <small>Nuget (Dependencies)</small>
                         </p>
                         <div class="clearfix">
                             <div class="pull-left outline"><h4><span class="kalarrs"></span></h4></div>
@@ -281,6 +461,7 @@ https://aws.amazon.com/visualstudio/
         </section>
         <section>
             <h2>Getting Started</h2>
+            <!--NOTE : NEED TO EXPLAIN HERE! Including dependencies.-->
             <p>What would normally take 4 hours the <span class="kalarrs">kalarrs</span>/cli condenses
                 into less than 20 minutes.</p>
             <iframe allowFullScreen="allowFullScreen"
@@ -330,10 +511,10 @@ $ kalarrs global sls
                     <span class="folder project"><i class="material-icons">folder</i>Project</span>
                     <div>
                         <span class="folder dist"><i class="material-icons">folder</i>.serverless</span>
-                        <span class="folder dist"><i class="material-icons">folder</i>.webpack</span>
-                        <span class="folder docs"><i class="material-icons">folder</i>docs</span>
+                        <!--<span class="folder dist"><i class="material-icons">folder</i>.webpack</span>-->
+                        <!--<span class="folder docs"><i class="material-icons">folder</i>docs</span>-->
                         <span class="folder src"><i class="material-icons">folder</i>src</span>
-                        <span class="folder"><i class="material-icons">folder</i>node_modules</span>
+                        <span class="folder"><i class="material-icons">folder</i>local</span>
                         <span class="folder test"><i class="material-icons">folder</i>test</span>
                     </div>
                 </div>
@@ -366,9 +547,9 @@ $ kalarrs workspace init
                         <span class="folder fragment" data-fragment-index="3"><i
                                 class="material-icons">folder</i>.git</span>
                         <span class="folder library fragment" data-fragment-index="5"><i
-                                class="material-icons">folder</i>node_modules</span>
-                        <span class="file fragment" data-fragment-index="3"><i
-                                class="material-icons">insert_drive_file</i>.gitignore</span>
+                                class="material-icons">folder</i>local</span><span class="file fragment"
+                                                                                   data-fragment-index="3"><i
+                            class="material-icons">insert_drive_file</i>.gitignore</span>
                         <span class="file fragment" data-fragment-index="4"><i
                                 class="material-icons">insert_drive_file</i>package.json</span>
                         <span class="file fragment" data-fragment-index="8"><i
@@ -395,10 +576,10 @@ $ kalarrs workspace init
                     <span class="folder project"><i class="material-icons">folder</i>Project</span>
                     <div>
                         <span class="folder dist"><i class="material-icons">folder</i>.serverless</span>
-                        <span class="folder dist"><i class="material-icons">folder</i>.webpack</span>
-                        <span class="folder docs"><i class="material-icons">folder</i>docs</span>
+                        <!--<span class="folder dist"><i class="material-icons">folder</i>.webpack</span>-->
+                        <!--<span class="folder docs"><i class="material-icons">folder</i>docs</span>-->
                         <span class="folder src"><i class="material-icons">folder</i>src</span>
-                        <span class="folder"><i class="material-icons">folder</i>node_modules</span>
+                        <span class="folder"><i class="material-icons">folder</i>local</span>
                         <span class="folder test"><i class="material-icons">folder</i>test</span>
                     </div>
                 </div>
@@ -409,19 +590,13 @@ $ kalarrs workspace init
             <ol>
                 <li>Clone a template</li>
                 <ul>
-                    <li>github.com/kalarrs/serverless-template-*</li>
+                    <li>github.com/kalarrs/serverless-template-csharp</li>
                 </ul>
-                <li>Create from scratch</li>
+                <li>Create new from .NET cli templates</li>
             </ol>
         </section>
         <section>
-            <h2>Create a typescript api with mongo</h2>
-            <pre class="fragment" style="margin-top: -20px; margin-bottom: 0;"><code class="shell" data-trim
-                                                                                     contenteditable
-                                                                                     style="font-size: 18px;">
-$ serverless create --template-url https://github.com/kalarrs/\
-serverless-template-typescript/tree/master/aws/mongo --path users
-            </code></pre>
+            <h2>Create an empty project</h2>
         </section>
 
 
@@ -501,6 +676,10 @@ serverless-template-typescript/tree/master/aws/mongo --path users
             </ul>
         </section>
         -->
+
+        <!--<p class="fragment">This is all possible because of Function as a Service (FaaS)</p>-->
+
+
     </div>
 </div>
 
