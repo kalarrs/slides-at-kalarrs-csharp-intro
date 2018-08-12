@@ -1,6 +1,7 @@
 .reveal .icon {
   border: none;
-  background: transparent; }
+  background: transparent;
+  box-shadow: none; }
 
 .reveal .clearfix {
   overflow: hidden;

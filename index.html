@@ -65,10 +65,16 @@ https://aws.amazon.com/visualstudio/
             <h2>This talk</h2>
             <ul>
                 <li class="fragment">How to forget about managing servers.</li>
-                <li class="fragment">Just write code and scale to support millions of customers without any code changes.</li>
-                <li class="fragment">Save thousands of dollars a month by only paying when your code is actually running.</li>
-                <li class="fragment">Deploy faster and scale further because there is no need to wait for a server to be built or deployed.</li>
-           </ul>
+                <li class="fragment">Just write code and scale to support millions of customers without any code
+                    changes.
+                </li>
+                <li class="fragment">Save thousands of dollars a month by only paying when your code is actually
+                    running.
+                </li>
+                <li class="fragment">Deploy faster and scale further because there is no need to wait for a server to be
+                    built or deployed.
+                </li>
+            </ul>
         </section>
         <section>
             <h2>After this talk</h2>
@@ -176,10 +182,13 @@ https://aws.amazon.com/visualstudio/
                     </p>
                 </div>
             </div>
+            <p class="fragment">* <a href="https://serverless.com/framework" target="_blank">Serverless Framework</a></p>
         </section>
         <section>
             <h2 style="text-transform: none;">FaaS</h2>
-            <p style="margin-top: -20px; margin-bottom: 0;">It's where the servers at!</p>
+            <p style="margin-top: -20px; margin-bottom: 0;">
+                <small>It's where the servers at!</small>
+            </p>
             <hr>
             <div class="clearfix" style="font-size: .8em; text-align: left;">
                 <div class="pull-left">
@@ -242,70 +251,48 @@ https://aws.amazon.com/visualstudio/
 
             </code></pre>
             <div>
-                <img src="assets/images/icons/csharp-server.png" class="icon fragment" alt="">
-                <img src="assets/images/icons/csharp-server.png" class="icon fragment" alt="">
                 <img src="assets/images/icons/csharp-server.png" class="icon" alt="">
-                <img src="assets/images/icons/csharp-server.png" class="icon fragment" alt="">
-                <img src="assets/images/icons/csharp-server.png" class="icon fragment" alt="">
             </div>
         </section>
         <section>
             <h2>Function invocation</h2>
+            <p>Most serverless functions are invoked by events. Many common systems produce events. You can also invoke
+                a serverless function on demand.</p>
+            <div class="fragment">
+                <img src="assets/images/icons/json.png" class="icon pull-left" alt="">
+                <small>
+                <ul>
+                    <li>Api</li>
+                    <li>File System Events (S3)</li>
+                    <li>DB Events</li>
+                    <li>Logging Events</li>
+                    <li>Queues</li>
+                    <li>Other Functions (Pipeline)</li>
+                    <li>...</li>
+                </ul>
+                </small>
+                <br>
+                <br>
+                <img src="assets/images/icons/csharp-server.png" class="icon fragment" alt="">
+                <img src="assets/images/icons/csharp-server.png" class="icon fragment" alt="">
+                <img src="assets/images/icons/csharp-server.png" class="icon fragment" alt="">
+                <p class="fragment">FaaS Provider will scale horizontally, automatically!</p>
+            </div>
         </section>
-<!--
-        <section>
-            <h2>Before we begin</h2>
-
-            <p>Many terms will be confusing.</p>
-            <ul>
-                <li class="fragment">Typically people call the implementation of FaaS: "Serverless"</li>
-                <li class="fragment">Example of FaaS providers: "AWS Lambda", "Google Cloud Functions", & "Azure
-                    Functions"
-                </li>
-                <li class="fragment">You will also see terms like "Serverless architecture". This is talking about how
-                    you write code to utilize FaaS providers.
-                </li>
-                <li class="fragment">There is a company called Serverless. Which is just plain confusing.</li>
-            </ul>
-        </section>
-        <section>
-            <h2>To Avoid Confusion</h2>
-
-            <dl>
-                <dt class="fragment">Function as a service (FaaS) <strike>Serverless</strike></dt>
-                <dd class="fragment">
-                    <small>Function as a service (FaaS) is a category of cloud computing services that provides a
-                        platform allowing customers to develop, run, and manage application functionalities without the
-                        complexity of building and maintaining the infrastructure.
-                    </small>
-                </dd>
-
-                <dt class="fragment">AWS Lambda <strike>Serverless</strike></dt>
-                <dd class="fragment">
-                    <small>Run code without thinking about servers. Pay only for the compute time you consume. With
-                        Lambda, you can run code for virtually any type of application or backend service - all with
-                        zero administration. Just upload your code and Lambda takes care of everything required to run
-                        and scale your code with high availability. You can set up your code to automatically trigger
-                        from other AWS services or call it directly from any web or mobile app.
-                    </small>
-                </dd>
-
-                <dt class="fragment">Serverless Framework <strike>Serverless</strike></dt>
-                <dd class="fragment">
-                    <small>The Serverless Framework is an open-source CLI for building and deploying serverless
-                        applications. Written in JavaScript.
-                    </small>
-                </dd>
-            </dl>
-        </section>
-        -->
         <section>
             <h2>Get started with AWS Lambda.</h2>
             <small>
                 <ol>
-                    <li class="fragment">How to create lambda functions directly on AWS.</li>
-                    <li class="fragment">How to create lambda functions with serverless framework.</li>
-                    <li class="fragment">How to creating lambda functions with @kalarrs.</li>
+                    <li class="fragment">How to create lambda functions online via the AWS console.</li>
+                    <li class="fragment">
+                        How to create lambda functions with Visual Studio.
+                        <ul>
+                            <li>Template</li>
+                            <li>Template w/ CloudFormation</li>
+                        </ul>
+                    </li>
+                    <li class="fragment">How to create lambda functions with serverless framework on the cli.</li>
+                    <li class="fragment">How to creating lambda functions with <span class="kalarrs">kalarrs</span> on the cli.</li>
                 </ol>
             </small>
         </section>
