@@ -85,6 +85,8 @@
     color: #117cad; }
   .reveal .folder.library i, .reveal .file.library i {
     color: #efef8f; }
+  .reveal .folder.gray i, .reveal .file.gray i {
+    color: #666; }
 
 .reveal .tree {
   font-size: .8em;

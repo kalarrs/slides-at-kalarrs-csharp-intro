@@ -280,10 +280,10 @@ https://aws.amazon.com/visualstudio/
             </div>
         </section>
         <section>
-            <h2>Get started with AWS Lambda.</h2>
+            <h2>Get started with <br>AWS Lambda</h2>
             <small>
                 <ol>
-                    <li class="fragment">How to create lambda functions online via the AWS console.</li>
+                    <li class="fragment">How to create lambda functions online via the AWS console. (Online in the browser)</li>
                     <li class="fragment">
                         How to create lambda functions with Visual Studio.
                         <ul>
@@ -297,8 +297,8 @@ https://aws.amazon.com/visualstudio/
             </small>
         </section>
         <section>
-            <h2>#1 Your first AWS lambda function!</h2>
-            <p>Go to AWS Lambda Console</p>
+            <h2>#1 Creating functions in <br> AWS Console!</h2>
+            <p>Create a function in under a minute! Just go to AWS Lambda Console</p>
             <p><a href="https://console.aws.amazon.com/lambda/home?region=us-east-1#/home" target="_blank">https://console.aws.amazon.com/lambda/home?region=us-east-1#/home</a>
             </p>
         </section>
@@ -315,68 +315,63 @@ https://aws.amazon.com/visualstudio/
             </ul>
         </section>
         <section>
-            <h2>Solutions</h2>
-            <p>Creating an AWS lambda from Visual Studio by using the AWS Toolkit for Visual Studio</p>
+            <h2>#2 Creating functions in <br> Visual Studio</h2>
+
+            <p>Use VS to easily create and upload functions by using the AWS Toolkit for Visual Studio</p>
             <a href="https://aws.amazon.com/visualstudio/" target="_blank">https://aws.amazon.com/visualstudio/</a>
+
+            <div class="fragment" style="margin-top: 60px;">
+                <h4>prerequisites</h4>
+                <p><a href="https://docs.microsoft.com/en-us/visualstudio/install/update-visual-studio" target="_blank">Update
+                    Visual Studio</a> to latest version</p>
+                <p><a href="https://www.microsoft.com/net/learn/get-started-with-dotnet-tutorial" target="_blank">Update
+                    .NET SDK</a> to latest version</p>
+            </div>
         </section>
         <section>
-            <h2>AWS Console <br>VS <br> Visual Studio Plugin</h2>
+            <h2>AWS Console <br><em>VS</em> <br> Visual Studio Plugin</h2>
             <p>Note: You will need to setup AWS credentials to use the plugin.</p>
+        </section>
+        <section>
+            <h2>2a - From AWS Template</h2>
+            <p>Simply create a new project from visual studio and choose the AWS template. It's just that easy.</p>
         </section>
         <section>
             <h2>Pitfalls</h2>
             <ul>
-                <li class="fragment">Runtime languages are easy to get started with, but not compiled languages.</li>
-                <li class="fragment">C# code can't be edited in the browser. This is because it is a jitted language.
+                <li class="fragment">Simple functions are easy to deploy, however, unable to tell what code is
+                    deployed.
                 </li>
-                <li class="fragment">Really no instructions on what everything means. You would have to read a lot of
-                    docs.
-                </li>
-                <li class="fragment">Not clear how to upload your own code.</li>
+                <li class="fragment">Difficult to coordinate with teams.</li>
+                <li class="fragment">No real security, everyone is all powerful.</li>
+                <li class="fragment">Difficult to make complex event triggers.</li>
             </ul>
         </section>
-        <section>
-            <h2>#2-a Create an AWS Lambda from a template</h2>
 
-            <p><a href="https://docs.microsoft.com/en-us/visualstudio/install/update-visual-studio" target="_blank">Update
-                Visual Studio</a> to latest version</p>
-            <p><a href="https://www.microsoft.com/net/learn/get-started-with-dotnet-tutorial" target="_blank">Update
-                .NET SDK</a> to latest version</p>
-        </section>
         <section>
-            <h2>#2-b Create an AWS Lambda from a serverless (framework) template</h2>
-            <p>Respond to API GET request.</p>
+            <h2>#2-b From AWS serverless template</h2>
+            <p>Simply create a new project from visual studio and choose the AWS "serverless" template. It's just that easy (again).</p>
             <p>Works by using <a href="https://aws.amazon.com/cloudformation/" target="_blank">Cloud​Formation</a></p>
         </section>
-
         <section>
             <h2>Pitfalls</h2>
             <ul>
                 <li class="fragment">You have to know cloud formation in order to expand the number of endpoints.</li>
             </ul>
         </section>
-
         <section>
-            <h2>Without CloudFormation</h2>
-            <ul>
-                <li>Manually Create API Gateway</li>
-                <li>Manually Create API Gateway Resources</li>
-                <li>Manually Create and Upload Lambda Code</li>
-                <li>Manually Configure Environment variables</li>
-                <li>Wire events to Lambdas</li>
-                <li>Setup custom code backups</li>
-                <li>Multiple cloud providers is difficult</li>
-            </ul>
+            <h2>#3 Creating functions with <br>Serverless Framework</h2>
+
+            <p>Infrastructure As Code, Simple Serverless Development on the cli, Provider Agnostic</p>
+
+            <div class="fragment" style="margin-top: 60px;">
+                <h4>prerequisites</h4>
+                <p><a href="https://nodejs.org/en/download/" target="_blank">NodeJS</a></p>
+            </div>
         </section>
         <section>
-            <h2>Moving to Serverless Framework</h2>
-
-            <p>Requires NodeJS</p>
-
-            <p>Can't use the VS Studio Plugin for deployments</p>
-        </section>
-        <!--<section>
-            <h2>What does Serverless do?</h2>
+            <h2>Serverless Framework</h2>
+            <p><a href="https://serverless.com/framework/docs/" target="_blank">Docs</a> and <a href="https://serverless.com/framework/docs/providers/aws/guide/quick-start/">Guide</a></p>
             <ul>
                 <li>Automates the infrastructure process</li>
                 <li>
@@ -394,19 +389,36 @@ https://aws.amazon.com/visualstudio/
             </ul>
         </section>
         <section>
-            <h2>What Serverless Framework doesn't do</h2>
+            <h2>Pitfalls</h2>
             <ul>
-                <li>Provide Architecture and Design patterns</li>
-                <li>Generate code</li>
-                <li>Visualize Infrastructure</li>
-                &lt;!&ndash;https://abhishek-tiwari.com/visualising-cloudformation-stack/&ndash;&gt;
-                <li>Use latest code</li>
-                <li>Support best practices for hitrust/HIPPA compliance</li>
+                <li class="fragment">Only the foundation, not much scaffolding.</li>
+                <li class="fragment">Using the cli is a learning curve for some teams.</li>
+                <li class="fragment">Project structure leaves much to be desired.</li>
+                <li class="fragment">No real code templates.</li>
             </ul>
-        </section>-->
-
+        </section>
         <section>
-            <h2>What is <span class="kalarrs">kalarrs</span></h2>
+            <h2>#4 Creating functions with <br>Serverless Framework <br> &amp; <br> <span class="kalarrs">kalarrs</span>
+            </h2>
+
+            <p>Workspaces, Code Templates, Proven Code Patterns</p>
+
+            <div class="fragment" style="margin-top: 60px;">
+                <h4>prerequisites</h4>
+
+                <p>
+                    <small style="text-align: left;">
+                        <a href="https://nodejs.org/en/download/" target="_blank">NodeJS</a> latest LTS
+                        <br><a href="https://yarnpkg.com/en/docs/install" target="_blank">Yarn</a>
+                        <br><a href="https://serverless.com/framework/docs/getting-started/" target="_blank">Serverless
+                        Framework cli</a>
+                        <br><a href="https://aws.amazon.com/cli/" target="_blank">AWS cli</a>
+                    </small>
+                </p>
+            </div>
+        </section>
+        <section>
+            <h2><span class="kalarrs">kalarrs</span></h2>
             <p>Set of tooling built on top of <a href="https://serverless.com/framework">Serverless Framework</a>,
                 mainly as plugins. As well as a collection of
                 libraries to normalize development between languages.</p>
@@ -448,8 +460,7 @@ https://aws.amazon.com/visualstudio/
         </section>
         <section>
             <h2>Getting Started</h2>
-            <!--NOTE : NEED TO EXPLAIN HERE! Including dependencies.-->
-            <p>What would normally take 4 hours the <span class="kalarrs">kalarrs</span>/cli condenses
+            <p>Get started Quickly! What would normally take 4 hours the <span class="kalarrs">kalarrs</span>/cli condenses
                 into less than 20 minutes.</p>
             <iframe allowFullScreen="allowFullScreen"
                     src="https://www.youtube.com/embed/Dox6GQznpRI?ecver=1&amp;iv_load_policy=1&amp;rel=0&amp;yt:stretch=16:9&amp;autohide=1&amp;color=red"
@@ -474,13 +485,12 @@ https://aws.amazon.com/visualstudio/
                                                                                      style="font-size: 18px;">
 $ kalarrs global sls
 					</code></pre>
-            <p class="fragment">Setup your machine for serverless develpment.</p>
-            <p class="fragment">Now time to create a Workspace.</p>
+            <p class="fragment">Setup your machine for serverless development.</p>
         </section>
         <section>
-            <h2>What is a Workspace?</h2>
-            <p>Named after the Java equivalent a workspace is a folder that contains projects. In dotnet this is very
-                similar to a solution.</p>
+            <h2>Workspace</h2>
+            <p>Organize multiple project by using a workspace, named like the Java equivalent, it is a folder that contains projects. Very
+                similar to a .NET solution.</p>
             <div class="clearfix">
                 <div class="fragment tree pull-left">
                     <span class="folder workspace"><i class="material-icons">folder</i>Workspace</span>
@@ -498,10 +508,9 @@ $ kalarrs global sls
                     <span class="folder project"><i class="material-icons">folder</i>Project</span>
                     <div>
                         <span class="folder dist"><i class="material-icons">folder</i>.serverless</span>
-                        <!--<span class="folder dist"><i class="material-icons">folder</i>.webpack</span>-->
-                        <!--<span class="folder docs"><i class="material-icons">folder</i>docs</span>-->
+                        <span class="folder"><i class="material-icons">folder</i>node_modules</span>
                         <span class="folder src"><i class="material-icons">folder</i>src</span>
-                        <span class="folder"><i class="material-icons">folder</i>local</span>
+                        <span class="folder gray"><i class="material-icons">folder</i>local</span>
                         <span class="folder test"><i class="material-icons">folder</i>test</span>
                     </div>
                 </div>
@@ -533,10 +542,10 @@ $ kalarrs workspace init
                         </any>
                         <span class="folder fragment" data-fragment-index="3"><i
                                 class="material-icons">folder</i>.git</span>
-                        <span class="folder library fragment" data-fragment-index="5"><i
-                                class="material-icons">folder</i>local</span><span class="file fragment"
-                                                                                   data-fragment-index="3"><i
+                        <span class="file fragment" data-fragment-index="3"><i
                             class="material-icons">insert_drive_file</i>.gitignore</span>
+                        <span class="folder library fragment" data-fragment-index="5"><i
+                                class="material-icons">folder</i>node_modules</span>
                         <span class="file fragment" data-fragment-index="4"><i
                                 class="material-icons">insert_drive_file</i>package.json</span>
                         <span class="file fragment" data-fragment-index="8"><i
@@ -555,39 +564,62 @@ $ kalarrs workspace init
             </div>
         </section>
         <section>
-            <h2>What is a Project?</h2>
-            <p>The code, documentation, & tests for a micro service. Typically an api resource, scheduled job, or part
+            <h2>Project</h2>
+            <p>The code, documentation, local server, & tests for a micro service. Typically an api resource, scheduled job, or part
                 of a pipeline.</p>
             <div class="clearfix">
                 <div class="fragment tree pull-left">
                     <span class="folder project"><i class="material-icons">folder</i>Project</span>
                     <div>
                         <span class="folder dist"><i class="material-icons">folder</i>.serverless</span>
-                        <!--<span class="folder dist"><i class="material-icons">folder</i>.webpack</span>-->
-                        <!--<span class="folder docs"><i class="material-icons">folder</i>docs</span>-->
+                        <span class="folder library"><i class="material-icons">folder</i>node_modules</span>
+                        <span class="file"><i class="material-icons">insert_drive_file</i>project.sln</span>
                         <span class="folder src"><i class="material-icons">folder</i>src</span>
-                        <span class="folder"><i class="material-icons">folder</i>local</span>
+                        <span class="folder gray"><i class="material-icons">folder</i>local</span>
                         <span class="folder test"><i class="material-icons">folder</i>test</span>
+                    </div>
+                </div>
+                <div class="fragment tree pull-left">
+                    <span class="folder project"><i class="material-icons">folder</i>src</span>
+                    <div>
+                        <span class="folder dist"><i class="material-icons">folder</i>bin</span>
+                        <span class="file"><i class="material-icons">insert_drive_file</i>project.csproj</span>
+                    </div>
+                </div>
+                <div class="fragment tree pull-left">
+                    <span class="folder gray"><i class="material-icons">folder</i>local</span>
+                    <div>
+                        <span class="folder dist"><i class="material-icons">folder</i>bin</span>
+                        <span class="file"><i class="material-icons">insert_drive_file</i>project.Local.csproj</span>
+                    </div>
+                </div>
+                <div class="fragment tree pull-left">
+                    <span class="folder test"><i class="material-icons">folder</i>test</span>
+                    <div>
+                        <span class="folder dist"><i class="material-icons">folder</i>bin</span>
+                        <span class="file"><i class="material-icons">insert_drive_file</i>project.Test.csproj</span>
                     </div>
                 </div>
             </div>
         </section>
         <section>
-            <h2>Creating a new project</h2>
+            <h2><span class="kalarrs">kalarrs</span> c#
+                <a href="https://github.com/kalarrs/serverless-template-csharp/tree/aws-cloud-watch-events">templates</a>
+            </h2>
             <ol>
-                <li>Clone a template</li>
-                <ul>
-                    <li>github.com/kalarrs/serverless-template-csharp</li>
-                </ul>
-                <li>Create new from .NET cli templates</li>
+                <li>
+                    Clone a template (Copy/Paste)
+                    <ul>
+                        <li>github.com/kalarrs/serverless-template-csharp/aws/changes</li>
+                        <li>github.com/kalarrs/serverless-template-csharp/aws/mongo</li>
+                    </ul>
+                </li>
+                <li>
+                    Create new from .NET cli template
+                    <ul><li>github.com/kalarrs/serverless-template-csharp/aws/template</li></ul>
+                </li>
             </ol>
         </section>
-        <section>
-            <h2>Create an empty project</h2>
-        </section>
-
-
-        <!--
         <section>
             <h2>Main Focus of <span style="text-transform: lowercase;"><span
                     style="color: #bada55;">@</span>kalarrs</span></h2>
@@ -647,26 +679,11 @@ $ kalarrs workspace init
             </ul>
         </section>
         <section>
-            <h2>Making the transition to FaaS (Serverless)</h2>
-            <p>How do you get started on transitioning?</p>
+            <h2>Summary</h2>
+            <p>Making the transition to FaaS (Serverless) easier for everyone.</p>
             <p><span class="kalarrs">kalarrs</span>/cli allows you to get started quickly. It also has many templates
                 for creating common projects saving you and your company precious time.</p>
         </section>
-        <section>
-            <h2>What this looks like</h2>
-            <p>Demo Time</p>
-            <ul>
-                <li class="fragment">Workspace (Typescript, C#)</li>
-                <li class="fragment">AWS API Gateway</li>
-                <li class="fragment">AWS Cloud Watch Rules</li>
-                <li class="fragment">AWS Lambda with triggers from s3 (pipeline)</li>
-            </ul>
-        </section>
-        -->
-
-        <!--<p class="fragment">This is all possible because of Function as a Service (FaaS)</p>-->
-
-
     </div>
 </div>
 
