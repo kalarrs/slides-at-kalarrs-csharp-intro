@@ -283,16 +283,31 @@ https://aws.amazon.com/visualstudio/
             <h2>Get started with <br>AWS Lambda</h2>
             <small>
                 <ol>
-                    <li class="fragment">How to create lambda functions online via the AWS console. (Online in the browser)</li>
+                    <li class="fragment">
+                        How to create lambda functions online via the AWS console. (Online in the browser)
+                        <ul><li>Pitfalls</li></ul>
+                    </li>
                     <li class="fragment">
                         How to create lambda functions with Visual Studio.
                         <ul>
-                            <li>Template</li>
-                            <li>Template w/ CloudFormation</li>
+                            <li>
+                                Template
+                                <ul><li>Pitfalls</li></ul>
+                            </li>
+                            <li>
+                                Template w/ CloudFormation
+                                <ul><li>Pitfalls</li></ul>
+                            </li>
                         </ul>
                     </li>
-                    <li class="fragment">How to create lambda functions with serverless framework on the cli.</li>
-                    <li class="fragment">How to creating lambda functions with <span class="kalarrs">kalarrs</span> on the cli.</li>
+                    <li class="fragment">
+                        How to create lambda functions with serverless framework on the CLI.
+                        <ul><li>Pitfalls</li></ul>
+                    </li>
+                    <li class="fragment">
+                        How to creating lambda functions with <span class="kalarrs">kalarrs</span> on the CLI.
+                        <ul><li>Pitfalls</li></ul>
+                    </li>
                 </ol>
             </small>
         </section>
@@ -301,6 +316,9 @@ https://aws.amazon.com/visualstudio/
             <p>Create a function in under a minute! Just go to AWS Lambda Console</p>
             <p><a href="https://console.aws.amazon.com/lambda/home?region=us-east-1#/home" target="_blank">https://console.aws.amazon.com/lambda/home?region=us-east-1#/home</a>
             </p>
+        </section>
+        <section>
+            <h2>Demo</h2>
         </section>
         <section>
             <h2>Pitfalls</h2>
@@ -337,6 +355,9 @@ https://aws.amazon.com/visualstudio/
             <p>Simply create a new project from visual studio and choose the AWS template. It's just that easy.</p>
         </section>
         <section>
+            <h2>Demo</h2>
+        </section>
+        <section>
             <h2>Pitfalls</h2>
             <ul>
                 <li class="fragment">Simple functions are easy to deploy, however, unable to tell what code is
@@ -362,28 +383,40 @@ https://aws.amazon.com/visualstudio/
             </ul>
         </section>
         <section>
+            <h2>Demo</h2>
+        </section>
+        <section>
             <h2>#3 Creating functions with <br>Serverless Framework</h2>
 
-            <p>Infrastructure As Code, Simple Serverless Development on the cli, Provider Agnostic</p>
+            <p>Infrastructure As Code, Simple Serverless Development on the CLI, Provider Agnostic</p>
 
             <div class="fragment" style="margin-top: 60px;">
                 <h4>prerequisites</h4>
-                <p><a href="https://nodejs.org/en/download/" target="_blank">NodeJS</a></p>
+                <p>
+                    <small style="text-align: left;">
+                        <a href="https://portal.aws.amazon.com/billing/signup" target="_blank">AWS Account</a>
+                        <br><a href="https://aws.amazon.com/cli/" target="_blank">AWS CLI</a>
+                        <br><a href="https://nodejs.org/en/download/" target="_blank">NodeJS</a>
+                    </small>
+                </p>
             </div>
         </section>
         <section>
             <h2>Serverless Framework</h2>
-            <p><a href="https://serverless.com/framework/docs/" target="_blank">Docs</a> and <a href="https://serverless.com/framework/docs/providers/aws/guide/quick-start/">Guide</a></p>
+            <p><a href="https://serverless.com/framework/docs/" target="_blank">Docs</a> and <a href="https://serverless.com/framework/docs/providers/aws/guide/quick-start/" target="_blank">Guide</a></p>
+            <p><a href="https://josephwoodward.co.uk/2017/11/going-serverless-net-core-aws-lambda-serverless-framework" target="_blank">Getting started</a></p>
             <ul>
                 <li>Automates the infrastructure process</li>
                 <li>
                     Automatically create cloud formations
+                    <small>
                     <ul>
                         <li>Creates resources (All)</li>
                         <li>Configures Events</li>
                         <li>Configures Environment variables</li>
                         <li>Organizes code</li>
                     </ul>
+                    </small>
                 </li>
                 <li>Stores Code on s3</li>
                 <li>Deploys Code</li>
@@ -391,10 +424,22 @@ https://aws.amazon.com/visualstudio/
             </ul>
         </section>
         <section>
+            <h2>Demo</h2>
+            <ul>
+                <li>Sign up with AWS</li>
+                <li>Create an account with programmatic access</li>
+                <li>Install AWS CLI</li>
+                <li>Configure AWS Profile</li>
+                <li>Install NodeJS</li>
+                <li>Install Serverles CLI</li>
+                <li><pre><code class="shell" data-trim contenteditable style="font-size: 18px;">$ sls create --template aws-csharp</code></pre></li>
+            </ul>
+        </section>
+        <section>
             <h2>Pitfalls</h2>
             <ul>
                 <li class="fragment">Only the foundation, not much scaffolding.</li>
-                <li class="fragment">Using the cli is a learning curve for some teams.</li>
+                <li class="fragment">Using the CLI is a learning curve for some teams.</li>
                 <li class="fragment">Project structure leaves much to be desired.</li>
                 <li class="fragment">No real code templates.</li>
                 <li class="fragment">Limited local debugging.</li>
@@ -406,19 +451,32 @@ https://aws.amazon.com/visualstudio/
 
             <p>Run and Debug Locally, Workspaces, Code Templates, Proven Code Patterns</p>
 
-            <div class="fragment" style="margin-top: 60px;">
+            <div class="fragment" style="margin-top: 5px;">
                 <h4>prerequisites</h4>
-
                 <p>
                     <small style="text-align: left;">
-                        <a href="https://nodejs.org/en/download/" target="_blank">NodeJS</a> latest LTS
-                        <br><a href="https://yarnpkg.com/en/docs/install" target="_blank">Yarn</a>
+                        <a href="https://portal.aws.amazon.com/billing/signup" target="_blank">AWS Account</a>
+                        <br><a href="https://aws.amazon.com/cli/" target="_blank">AWS CLI</a>
+                        <br><a href="https://nodejs.org/en/download/" target="_blank">NodeJS</a> (latest LTS)
+                        &amp; <a href="https://yarnpkg.com/en/docs/install" target="_blank">Yarn</a>
                         <br><a href="https://serverless.com/framework/docs/getting-started/" target="_blank">Serverless
-                        Framework cli</a>
-                        <br><a href="https://aws.amazon.com/cli/" target="_blank">AWS cli</a>
+                        Framework CLI</a>
+                        <br><a href="https://docs.microsoft.com/en-us/dotnet/core/tools/" target="_blank">.NET Core CLI</a>
                     </small>
                 </p>
             </div>
+        </section>
+        <section>
+            <h2>Demo</h2>
+            <ul>
+                <li>Sign up with AWS</li>
+                <li>Create an account with programmatic access</li>
+                <li>Install Yarn</li>
+                <li>Install @kalarrs/cli</li>
+                <li><pre><code class="shell" data-trim contenteditable style="font-size: 18px;">$ kalarrs global sls</code></pre></li>
+                <li><pre><code class="shell" data-trim contenteditable style="font-size: 18px;">$ kalarrs workspace init</code></pre></li>
+                <li><pre><code class="shell" data-trim contenteditable style="font-size: 18px;">$ dotnet new</code></pre></li>
+            </ul>
         </section>
         <section>
             <h2><span class="kalarrs">kalarrs</span></h2>
@@ -492,7 +550,7 @@ $ kalarrs global sls
         </section>
         <section>
             <h2>Workspace</h2>
-            <p>Organize multiple project by using a workspace, named like the Java equivalent, it is a folder that contains projects. Very
+            <p>Organize multiple projects by using a workspace, named like the Java equivalent, it is a folder that contains projects. Very
                 similar to a .NET solution.</p>
             <div class="clearfix">
                 <div class="fragment tree pull-left">
@@ -618,7 +676,7 @@ $ kalarrs workspace init
                     </ul>
                 </li>
                 <li>
-                    Create new from .NET cli template
+                    Create new from .NET CLI template
                     <ul><li>github.com/kalarrs/serverless-template-csharp/aws/template</li></ul>
                 </li>
             </ol>
