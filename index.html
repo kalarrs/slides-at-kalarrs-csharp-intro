@@ -369,7 +369,6 @@ https://aws.amazon.com/visualstudio/
                 <li class="fragment">Limited local debugging.</li>
             </ul>
         </section>
-
         <section>
             <h2>#2-b From AWS serverless template</h2>
             <p>Simply create a new project from visual studio and choose the AWS "serverless" template. It's just that easy (again).</p>
@@ -432,6 +431,9 @@ https://aws.amazon.com/visualstudio/
                 <li>Configure AWS Profile</li>
                 <li>Install NodeJS</li>
                 <li>Install Serverles CLI</li>
+                <li><pre><code class="shell" data-trim contenteditable style="font-size: 18px;">$ mkdir sls && cd sls</code></pre></li>
+                <li><pre><code class="shell" data-trim contenteditable style="font-size: 18px;">$ git init</code></pre></li>
+                <li><pre><code class="shell" data-trim contenteditable style="font-size: 18px;">$ mkdir cs && cd cs</code></pre></li>
                 <li><pre><code class="shell" data-trim contenteditable style="font-size: 18px;">$ sls create --template aws-csharp</code></pre></li>
             </ul>
         </section>
@@ -474,8 +476,10 @@ https://aws.amazon.com/visualstudio/
                 <li>Install Yarn</li>
                 <li>Install @kalarrs/cli</li>
                 <li><pre><code class="shell" data-trim contenteditable style="font-size: 18px;">$ kalarrs global sls</code></pre></li>
+                <li><pre><code class="shell" data-trim contenteditable style="font-size: 18px;">$ mkdir workspace && cd workspace</code></pre></li>
                 <li><pre><code class="shell" data-trim contenteditable style="font-size: 18px;">$ kalarrs workspace init</code></pre></li>
-                <li><pre><code class="shell" data-trim contenteditable style="font-size: 18px;">$ dotnet new</code></pre></li>
+                <li><pre><code class="shell" data-trim contenteditable style="font-size: 18px;">$ mkdir cs && cd cs</code></pre></li>
+                <li><pre><code class="shell" data-trim contenteditable style="font-size: 18px;">$ dotnet new kalarrsaws -n cs</code></pre></li>
             </ul>
         </section>
         <section>
