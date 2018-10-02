@@ -8,7 +8,8 @@
   "scripts": {
     "test": "grunt test",
     "start": "grunt serve",
-    "build": "grunt"
+    "build": "grunt",
+    "deploy": "node ./scripts/deploy-prod"
   },
   "author": {
     "name": "Hakim El Hattab",
