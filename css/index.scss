@@ -50,6 +50,11 @@
   }
 
   .kalarrs {
+    img {
+      border: none;
+      background: transparent;
+    }
+
     font-size: 1.1em;
     text-transform: lowercase;
     &:before {

@@ -37,6 +37,9 @@
 .reveal .kalarrs {
   font-size: 1.1em;
   text-transform: lowercase; }
+  .reveal .kalarrs img {
+    border: none;
+    background: transparent; }
   .reveal .kalarrs:before {
     color: #bada55;
     content: '@'; }
